@@ -6,19 +6,21 @@ Java RESTfulAPI criada para app de banco de horas.
 classDiagram
     class User {
         +String userName
-        +Infos infos
+        +UserInfo userInfo
         +Workload workload
         +WeeklyActivity weeklyActivity
         +DailyActivity dailyActivity
         +Progress progress
     }
 
-    class Infos {
+    class UserInfo {
         +String contract
         +String sector
         +String hours
         +String manager
         +String project
+        +String email
+        +String password
     }
 
     class Workload {
@@ -46,7 +48,6 @@ classDiagram
         +String holidays
     }
 
-    %% Sugestão de classe adicional
     class LeaveRequest {
         +String leaveType
         +String startDate
@@ -55,9 +56,10 @@ classDiagram
     }
 
     %% Relacionamentos
-    User "1" --> "1" Infos
+    User "1" --> "1" UserInfo
     User "1" --> "1" Workload
     User "1" --> "1" WeeklyActivity
     User "1" --> "1" DailyActivity
     User "1" --> "1" Progress
     User "1" --> "0..*" LeaveRequest
+
