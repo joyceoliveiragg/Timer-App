@@ -1,13 +1,13 @@
-package me.dio.Timer.App;
+package me.dio.App.ProjectTimer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TimerAppApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TimerAppApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

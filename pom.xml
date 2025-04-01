@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>me.dio</groupId>
-	<artifactId>Timer-App</artifactId>
+	<artifactId>App</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Timer-App</name>
 	<description>Demo project for Spring Boot</description>
