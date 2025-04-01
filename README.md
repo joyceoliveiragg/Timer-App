@@ -5,54 +5,66 @@ Java RESTfulAPI criada para app de banco de horas.
 ```mermaid
 classDiagram
     class User {
-        +String userName
-        +UserInfo userInfo
-        +Workload workload
-        +WeeklyActivity weeklyActivity
-        +DailyActivity dailyActivity
-        +Progress progress
+        -String userName
+        -UserInfo userInfo
+        -Workload workload
+        -WeeklyActivity weeklyActivity
+        -DailyActivity dailyActivity
+        -Progress progress
+        +getUserInfo(): UserInfo
+        +getWorkload(): Workload
+        +getWeeklyActivity(): WeeklyActivity
+        +getDailyActivity(): DailyActivity
+        +getProgress(): Progress
     }
 
     class UserInfo {
-        +String contract
-        +String sector
-        +String hours
-        +String manager
-        +String project
-        +String email
-        +String password
+        -String contract
+        -String sector
+        -String hours
+        -String manager
+        -String project
+        -String email
+        -String password
+        +getContract(): String
+        +getSector(): String
     }
 
     class Workload {
-        +String internHours
-        +String cltHours
+        -String totalHours
+        +getTotalHours(): String
     }
 
     class WeeklyActivity {
-        +List~String~ days
-        +List~String~ workedHours
-        +List~String~ workloads
-        +List~String~ projects
+        -String[] days
+        -String[] workedHours
+        -String[] workloads
+        -String[] projects
+        +getWorkedHours(): String[]
     }
 
     class DailyActivity {
-        +List~String~ hours
-        +List~String~ projects
-        +List~String~ cards
+        -String[] hours
+        -String[] projects
+        -String[] cards
+        +getHours(): String[]
     }
 
     class Progress {
-        +String totalWorkedHoursMonth
-        +String totalWorkedHoursWeek
-        +String leave
-        +String holidays
+        -String totalWorkedHoursMonth
+        -String totalWorkedHoursWeek
+        -String remainingLeaves
+        -String holidays
+        +getRemainingLeaves(): String
     }
 
     class LeaveRequest {
-        +String leaveType
-        +String startDate
-        +String endDate
-        +String status
+        -String leaveType
+        -String startDate
+        -String endDate
+        -String status
+        +approveLeave(): void
+        +rejectLeave(): void
     }
 
     %% Relacionamentos
@@ -61,5 +73,5 @@ classDiagram
     User "1" --> "1" WeeklyActivity
     User "1" --> "1" DailyActivity
     User "1" --> "1" Progress
-    User "1" --> "0..*" LeaveRequest
-
+    User "1" --* LeaveRequest : "requests"
+```
