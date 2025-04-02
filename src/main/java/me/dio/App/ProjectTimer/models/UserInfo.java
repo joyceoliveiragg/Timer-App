@@ -1,37 +1,63 @@
 package me.dio.App.ProjectTimer.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class UserInfo {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
-        private String contract;
-        private String sector;
-        private String hours;
-        private String manager;
-        private String project;
+
+        @Column(unique = true) // Mantido como restrição de banco
         private String email;
+
+        @Column(unique = true)
+        private String employeeId;
+
         private String password;
+        private String role;
+        private String contractType;
+        private String sector;
+        private String manager;
+        private String weeklyWorkload;
+        private LocalDate hireDate;
+
+        @OneToOne(mappedBy = "userInfo")
+        private User user;
+
+        // Getters e Setters
 
         public Long getId() { return id; }
         public void setId(Long id) { this.id = id; }
-        public String getContract() { return contract; }
-        public void setContract(String contract) { this.contract = contract; }
-        public String getSector() { return sector; }
-        public void setSector(String sector) { this.sector = sector; }
-        public String getHours() { return hours; }
-        public void setHours(String hours) { this.hours = hours; }
-        public String getManager() { return manager; }
-        public void setManager(String manager) { this.manager = manager; }
-        public String getProject() { return project; }
-        public void setProject(String project) { this.project = project; }
+
+        public String getEmployeeId() { return employeeId; }
+        public void setEmployeeId(String employeeId) { this.employeeId = employeeId; }
+
         public String getEmail() { return email; }
         public void setEmail(String email) { this.email = email; }
+
         public String getPassword() { return password; }
         public void setPassword(String password) { this.password = password; }
+
+        public String getRole() { return role; }
+        public void setRole(String role) { this.role = role; }
+
+        public String getContractType() { return contractType; }
+        public void setContractType(String contractType) { this.contractType = contractType; }
+
+        public String getSector() { return sector; }
+        public void setSector(String sector) { this.sector = sector; }
+
+        public String getManager() { return manager; }
+        public void setManager(String manager) { this.manager = manager; }
+
+        public String getWeeklyWorkload() { return weeklyWorkload; }
+        public void setWeeklyWorkload(String weeklyWorkload) { this.weeklyWorkload = weeklyWorkload; }
+
+        public LocalDate getHireDate() { return hireDate; }
+        public void setHireDate(LocalDate hireDate) { this.hireDate = hireDate; }
+
+        public User getUser() { return user; }
+        public void setUser(User user) { this.user = user; }
 }
