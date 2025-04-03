@@ -12,3 +12,7 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   sever:
     port=${PORT:8080}:
+  springdoc:
+    swagger-ui:
+      path: /swagger-ui.html
+      enabled: true
